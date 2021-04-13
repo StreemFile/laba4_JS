@@ -31,14 +31,14 @@ function App() {
         setIsGroupSaved(!isGroupSaved);
     }
 
-    // let textInput = "";
-    //
-    // const savePreset = (e, name) => {
-    //     e.preventDefault();
-    //     console.log(textInput.value);
-    //     setPresetName(textInput.value);
-    //     setIsPresetSaved(!isPresetSaved);
-    // }
+    let textInput = "";
+
+    const savePreset = (e, name) => {
+        e.preventDefault();
+        console.log(textInput.value);
+        setPresetName(textInput.value);
+        setIsPresetSaved(!isPresetSaved);
+    }
 
 
     return (
@@ -66,10 +66,10 @@ function App() {
                 <Button onClick={(e) => saveGroup(e)}>
                     Save group
                 </Button>
-                {/*<input type="text" ref={(input) => { textInput = input; }}/>*/}
-                {/*<Button onClick={(e) => savePreset(e, presetName)}>*/}
-                {/*    save preset*/}
-                {/*</Button>*/}
+                <input type="text" ref={(input) => { textInput = input; }}/>
+                <Button onClick={(e) => savePreset(e, presetName)}>
+                    save preset
+                </Button>
             </form>
         </div>
     );

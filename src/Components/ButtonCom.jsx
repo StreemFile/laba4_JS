@@ -10,7 +10,7 @@ const ButtonDiv = styled.div`
   vertical-align: middle;
   line-height: 65px;
   box-shadow: 0 0 5px 2px ${props => {
-    if(props.isSelected) return props.unsubmittedShadow
+    if (props.isSelected) return props.unsubmittedShadow
     else return props.submittedShadow
   }};
   grid-column-start: ${props => props.start};
@@ -29,12 +29,13 @@ class ButtonCom extends Component {
     }
 
     componentWillReceiveProps(newProps) {
-        if(this.props.isGroupSaved !== newProps.isGroupSaved) {
-            if(this.state.isSelected) {
+        if (this.props.isGroupSaved !== newProps.isGroupSaved) {
+            if (this.state.isSelected) {
                 this.setState({
                     submittedShadow: this.props.shadow,
                     isSelected: false
                 })
+                this.props.callback(this.props.buttonName, this.props.shadow)
             }
         }
     }
@@ -42,9 +43,7 @@ class ButtonCom extends Component {
     handleSelect = () => {
         this.setState({
             isSelected: !this.state.isSelected
-            // shadow: this.props.shadow
         });
-        // this.props.callback(this.props.buttonName, this.props.shadow)
     }
 
     render() {
