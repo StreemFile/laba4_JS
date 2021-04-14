@@ -343,7 +343,7 @@ let Keyboard = (props) => {
     ]
 
 
-    let [bbb, setButtons] = useState([
+    const [bbb, setButtons] = useState([
         {
             isGroupSaved: props.isGroupSaved,
             shadow: "#ffffff",
@@ -684,14 +684,17 @@ let Keyboard = (props) => {
     // }
 
     const changeColor = (buttonName, color) => {
-        setButtons(buttons.map((item) => item.buttonName === buttonName ? {...item, shadow: color} : {...item}));
+        setButtons(bbb.map((item) => item.buttonName === buttonName ? {...item, shadow: color} : {...item}));
+        buttons = buttons.map((item) => item.buttonName === buttonName ? {...item, shadow: color} : {...item})
+        console.log(buttons);
+        setButtons(buttons);
     }
 
     useEffect(() => {
         if(props.isPresetSaved){
             localStorage.setItem(props.presetName, JSON.stringify(bbb))
         }
-    })
+    }, [buttons])
 
     return (
         <Wrapper>
